@@ -26,7 +26,10 @@ class CatalogCard {
     title: string;
     thumbnail: string;
     price: string | Node;
+    rating: string;
     description: string;
+    productPrice: string;
+    stock: string;
     cardContainer;
     card;
     cardImg;
@@ -36,11 +39,15 @@ class CatalogCard {
     priceWrapper;
     priceText;
     btnBin: HTMLElement & SourcesCatalogCard;
-    constructor({ title, images, price, description }: any, index: number) {
+    
+    constructor({ title, images, price, description, rating, stock}: any, index: number) {
         this.title = title;
         this.thumbnail = images[0];
         this.price = price;
+        this.productPrice = price;
+        this.stock = stock;
         this.description = description;
+        this.rating = rating;
         this.cardContainer = newTag('li', {
             className: 'product-card',
         });
@@ -91,7 +98,12 @@ class CatalogCard {
     }
     listenEvents() {
         this.btnOpenModal.addEventListener('click', () => {
-            this.openModal(this.title, this.description, this.thumbnail);
+            this.openModal(this.title,
+                this.description,
+                this.thumbnail,
+                this.rating,
+                this.productPrice,
+                this.stock);
         });
         this.btnBin.addEventListener('click', (event: any) => {
             // this.addToBin(event);
@@ -100,8 +112,19 @@ class CatalogCard {
             new Cart().addsToCart(event.target.id); //index of card
         });
     }
-    openModal(title: string, description: string, thumbnail: string) {
-        new Modal(title, description, thumbnail).openModal();
+    openModal(
+        title: string,
+        description: string,
+        thumbnail: string,
+        rating: string,
+        price: string,
+        stock: string) {
+        new Modal(title,
+            description,
+            thumbnail,
+            rating,
+            price,
+            stock).openModal();
     }
 }
 
