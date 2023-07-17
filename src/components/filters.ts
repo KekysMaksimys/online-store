@@ -1,5 +1,5 @@
 import { newTag } from './create-element';
-import { selectCategory } from './select-filter';
+import { selectFilter } from './select-filter';
 
 interface SourcesFilters {
     className?: string;
@@ -106,9 +106,13 @@ class Filters {
         this.filtersCategory.addEventListener('click', (event) => {
             const target = event.target as HTMLElement;
             target.classList.toggle('select');
-            selectCategory();
+            selectFilter('category');
+        });
 
-            // this.setToLocalStorage();
+        this.filtersBrand.addEventListener('click', (event) => {
+            const target = event.target as HTMLElement;
+            target.classList.toggle('select');
+            selectFilter('brand');
         });
     }
 }

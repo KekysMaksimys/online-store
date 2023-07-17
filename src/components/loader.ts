@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import json from '../data.json';
 import { CatalogCard } from './catalog-card';
 import { CategoriesBrands } from './category-brand-filters';
-import { selectCategoryArray } from './select-filter';
+import json from '../data.json';
 
 async function getCards() {
     try {
-        renderProducts(selectCategoryArray);
+        renderProducts(json);
     } catch (error) {
         console.log(error);
         console.log('Json undefiend')
@@ -45,4 +44,4 @@ function renderProducts(array: any[]) {
     cardsList.append(fragment);
     return cardsList;
 }
-// export {selectCategoryArray};
+

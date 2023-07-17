@@ -1,11 +1,10 @@
 import json from '../data.json';
-let selectCategoryArray = json;
 let indexesArray = Array.from(Array(json.length).keys());
 
-function selectCategory() {
+function selectFilter(typeFilter: string) {
     const selectCategoryAll = document.querySelectorAll('.select');
-    selectCategoryArray = [];
-    indexesArray = Array.from(Array(json.length).keys());
+    type ObjectKey = keyof typeof json[0];
+    let filter = typeFilter as ObjectKey;
     selectCategoryAll.forEach((el) => {
         json.forEach(
             (e: {
@@ -21,15 +20,13 @@ function selectCategory() {
                 thumbnail: string;
                 images: string[];
             }, index) => {
-                if (e.category === el.id) {
-                    selectCategoryArray.push(e);
+                if (e[filter] === el.id) {
                     indexesArray.splice(index, 1);
                 }
             }
         );
     });
     if (selectCategoryAll.length === 0) {
-        selectCategoryArray = json;
         indexesArray = Array.from(Array(json.length).keys());
         showAllCards();
     } else{
@@ -55,4 +52,4 @@ function showAllCards(){
 }
 
 
-export { selectCategory, selectCategoryArray };
+export { selectFilter};
