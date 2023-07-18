@@ -1,4 +1,4 @@
-import { newTag } from './create-element';
+import { newTag } from '../create-element';
 import { selectFilter } from './select-filter';
 
 interface SourcesFilters {
@@ -33,13 +33,8 @@ class Filters {
     filtersBrandList;
     filtersPrice;
     filtersPriceName;
-    filtersPriceData;
-    filtersPriceFrom;
-    filtersPriceTo;
     filtersStock;
     filtersStockName;
-    filtersStockData;
-    filtersStockFrom;
     filtersStockTo: HTMLElement & SourcesFilters;
     constructor() {
         this.filtersContainer = newTag('section', {
@@ -65,16 +60,16 @@ class Filters {
         this.filtersBrandList = newTag('div', { className: 'filters-brand-list' });
         //price
         this.filtersPrice = newTag('div', { className: 'filters-price' });
-        this.filtersPriceName = newTag('h3', { className: 'filters-price-name' });
-        this.filtersPriceData = newTag('div', { className: 'filters-price-data' });
-        this.filtersPriceFrom = newTag('div', { className: 'filters-price-from' });
-        this.filtersPriceTo = newTag('div', { className: 'filters-price-to' });
+        this.filtersPriceName = newTag('h3', { 
+            className: 'filters-price-name',
+            innerText: 'Prices',
+        });
         //stock
         this.filtersStock = newTag('div', { className: 'filters-stock' });
-        this.filtersStockName = newTag('h3', { className: 'filters-stock-name' });
-        this.filtersStockData = newTag('div', { className: 'filters-stock-data' });
-        this.filtersStockFrom = newTag('div', { className: 'filters-stock-from' });
-        this.filtersStockTo = newTag('div', { className: 'filters-stock-to' });
+        this.filtersStockName = newTag('h3', { 
+            className: 'filters-stock-name',
+            innerText: 'Stock',
+         });
 
         this.listenEvents();
     }
@@ -90,14 +85,8 @@ class Filters {
         this.filtersBrand.append(this.filtersBrandList);
         this.filtersContainer.append(this.filtersPrice);
         this.filtersPrice.append(this.filtersPriceName);
-        this.filtersPrice.append(this.filtersPriceData);
-        this.filtersPrice.append(this.filtersPriceFrom);
-        this.filtersPrice.append(this.filtersPriceTo);
         this.filtersContainer.append(this.filtersStock);
         this.filtersStock.append(this.filtersStockName);
-        this.filtersPrice.append(this.filtersStockData);
-        this.filtersPrice.append(this.filtersStockFrom);
-        this.filtersPrice.append(this.filtersStockTo);
 
         return this.filtersContainer;
     }

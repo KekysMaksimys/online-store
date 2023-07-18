@@ -1,6 +1,6 @@
 import { newTag } from './create-element';
 import { ProductCatalog } from './product-catalog';
-import { Filters } from './filters';
+import { Filters } from './filters/filters';
 import { Cart } from './cart';
 import { Form } from './order-form';
 

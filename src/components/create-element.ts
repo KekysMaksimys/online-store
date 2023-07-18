@@ -18,6 +18,7 @@ function newTag(
         checked?: boolean;
         width?: number;
         alt?: string;
+        placeholder?:string;
     }
 ) {
     return Object.assign(document.createElement(tag), options);

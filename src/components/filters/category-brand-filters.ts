@@ -1,7 +1,6 @@
-import { newTag } from './create-element';
+import { newTag } from '../create-element';
 
 class CategoriesBrands {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [x: string]: any;
     constructor(name: unknown) {
         this.name = name;

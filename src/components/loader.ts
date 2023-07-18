@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CatalogCard } from './catalog-card';
-import { CategoriesBrands } from './category-brand-filters';
+import { CategoriesBrands } from './filters/category-brand-filters';
+import {PricesStock} from './filters/prices-stock-filters';
 import json from '../data.json';
 
 async function getCards() {
@@ -21,10 +22,14 @@ function renderProducts(array: any[]) {
     const fragment = new DocumentFragment();
     let brands: any[] = [];
     let category: any[] = [];
+    let prices: any[] = [];
+    let stock: any[] = [];
     array.forEach((data, index) => {
         const card = new CatalogCard(data, index);
         brands.push(data.brand);
         category.push(data.category);
+        prices.push(data.price);
+        stock.push(data.stock);
         fragment.append(card.renderCard());
     });
     category = [...new Set(category)];
@@ -39,7 +44,12 @@ function renderProducts(array: any[]) {
         const brand = new CategoriesBrands(item);
         filtersBrand.append(brand.renderCategoriesBrands());
     });
-
+    const filtersPrice = document.querySelector('.filters-price');
+    const filterPrice = new PricesStock(prices, 'price');
+    filtersPrice.append(filterPrice.renderPricesStock());
+    const filtersStock = document.querySelector('.filters-stock');
+    const filterStock = new PricesStock(stock, 'stock');
+    filtersStock.append(filterStock.renderPricesStock());
     const cardsList = document.querySelector('.cards__list');
     cardsList.append(fragment);
     return cardsList;
