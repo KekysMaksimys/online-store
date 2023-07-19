@@ -35,13 +35,13 @@ function renderProducts(array: any[]) {
     category = [...new Set(category)];
     const filtersCategory = document.querySelector('.filters-category-list');
     category.forEach((item) => {
-        const category = new CategoriesBrands(item);
+        const category = new CategoriesBrands(item, 'category');
         filtersCategory.append(category.renderCategoriesBrands());
     });
     brands = [...new Set(brands)];
     const filtersBrand = document.querySelector('.filters-brand-list');
     brands.forEach((item) => {
-        const brand = new CategoriesBrands(item);
+        const brand = new CategoriesBrands(item, 'brand');
         filtersBrand.append(brand.renderCategoriesBrands());
     });
     const filtersPrice = document.querySelector('.filters-price');

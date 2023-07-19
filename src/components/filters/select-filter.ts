@@ -5,6 +5,7 @@ function selectFilter(typeFilter: string) {
     const selectCategoryAll = document.querySelectorAll('.select');
     type ObjectKey = keyof typeof json[0];
     let filter = typeFilter as ObjectKey;
+    indexesArray = Array.from(Array(json.length).keys());
     selectCategoryAll.forEach((el) => {
         json.forEach(
             (e: {
@@ -33,7 +34,7 @@ function selectFilter(typeFilter: string) {
         showAllCards();
         hideCards();
     }
-    console.log('indexes:',indexesArray)
+    // console.log('indexes:',indexesArray)
 }
 
 function filtersPricesStock(number: number, type: string, compare: string){
@@ -77,11 +78,12 @@ function filtersPricesStock(number: number, type: string, compare: string){
             }, index) => {
                     if (+e[typeFilter] <= +number) {
                         indexesArray.splice(index, 1);
+                        // console.log(indexesArray.slice(index, 1))
                     }
                 }
             );
     }
-    console.log(indexesArray)
+    // console.log(indexesArray)
     if(+number === 0){
         indexesArray = Array.from(Array(json.length).keys());
         showAllCards();
@@ -95,11 +97,12 @@ function resetFilters(){
     const selectCategoryAll = document.querySelectorAll('.select');
     const inputNumbersAll = document.querySelectorAll('.input-numbers');
     selectCategoryAll.forEach((elem: HTMLInputElement) => {
+        elem.classList.remove('select');
         elem.checked = false;
-    })
+    });
     inputNumbersAll.forEach((elem: HTMLInputElement) => {
         elem.value = '';
-    })
+    });
     indexesArray = Array.from(Array(json.length).keys());
     showAllCards();
 }

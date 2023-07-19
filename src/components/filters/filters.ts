@@ -86,19 +86,7 @@ class Filters {
     }
 
     listenEvents() {
-        this.filtersCategory.addEventListener('click', (event) => {
-            const target = event.target as HTMLElement;
-            target.classList.toggle('select');
-            selectFilter('category');
-        });
-
-        this.filtersBrand.addEventListener('click', (event) => {
-            const target = event.target as HTMLElement;
-            target.classList.toggle('select');
-            selectFilter('brand');
-        });
-
-        this.resetButton.addEventListener('click', (event) => {
+        this.resetButton.addEventListener('click', () => {
             resetFilters();
         })
     }
