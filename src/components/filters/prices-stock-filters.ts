@@ -21,10 +21,12 @@ class PricesStock {
         this.inputLow = newTag('input', {
             type: 'text',
             id: `input-low-${type}`,
+						className: `input-numbers`
         });
 				this.inputTop = newTag('input', {
 					type: 'text',
 					id: `input-top-${type}`,
+					className: `input-numbers`,
 				});
     }
     renderPricesStock() {

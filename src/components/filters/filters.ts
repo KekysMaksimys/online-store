@@ -1,5 +1,5 @@
 import { newTag } from '../create-element';
-import { selectFilter } from './select-filter';
+import { selectFilter, resetFilters} from './select-filter';
 
 interface SourcesFilters {
     className?: string;
@@ -24,7 +24,6 @@ class Filters {
     filtersContainer;
     resetFilters;
     resetButton;
-    saveButton;
     filtersCategory;
     filtersCategoryName;
     filtersCategoryList;
@@ -45,10 +44,6 @@ class Filters {
         this.resetButton = newTag('button', {
             id: 'filters-reset-button',
             innerText: 'Reset Filters',
-        });
-        this.saveButton = newTag('button', {
-            id: 'filters-save',
-            innerText: 'Copy Filters',
         });
         //category
         this.filtersCategory = newTag('div', { className: 'filters-category' });
@@ -76,7 +71,6 @@ class Filters {
     renderFilters() {
         this.filtersContainer.append(this.resetFilters);
         this.resetFilters.append(this.resetButton);
-        this.resetFilters.append(this.saveButton);
         this.filtersContainer.append(this.filtersCategory);
         this.filtersCategory.append(this.filtersCategoryName);
         this.filtersCategory.append(this.filtersCategoryList);
@@ -103,6 +97,10 @@ class Filters {
             target.classList.toggle('select');
             selectFilter('brand');
         });
+
+        this.resetButton.addEventListener('click', (event) => {
+            resetFilters();
+        })
     }
 }
 

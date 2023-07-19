@@ -54,7 +54,7 @@ function filtersPricesStock(number: number, type: string, compare: string){
                 thumbnail: string;
                 images: string[];
             }, index) => {
-                    if (+e[typeFilter] <= +number) {
+                    if (+e[typeFilter] >= +number) {
                         indexesArray.splice(index, 1);
                     }
                 }
@@ -75,13 +75,13 @@ function filtersPricesStock(number: number, type: string, compare: string){
                 thumbnail: string;
                 images: string[];
             }, index) => {
-                    if (+e[typeFilter] >= +number) {
+                    if (+e[typeFilter] <= +number) {
                         indexesArray.splice(index, 1);
                     }
                 }
             );
     }
-
+    console.log(indexesArray)
     if(+number === 0){
         indexesArray = Array.from(Array(json.length).keys());
         showAllCards();
@@ -89,6 +89,19 @@ function filtersPricesStock(number: number, type: string, compare: string){
         showAllCards();
         hideCards();
     }
+}
+
+function resetFilters(){
+    const selectCategoryAll = document.querySelectorAll('.select');
+    const inputNumbersAll = document.querySelectorAll('.input-numbers');
+    selectCategoryAll.forEach((elem: HTMLInputElement) => {
+        elem.checked = false;
+    })
+    inputNumbersAll.forEach((elem: HTMLInputElement) => {
+        elem.value = '';
+    })
+    indexesArray = Array.from(Array(json.length).keys());
+    showAllCards();
 }
 
 function hideCards(){
@@ -107,4 +120,4 @@ function showAllCards(){
 }
 
 
-export { selectFilter, filtersPricesStock};
+export { selectFilter, filtersPricesStock, resetFilters};
