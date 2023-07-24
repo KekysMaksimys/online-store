@@ -30,7 +30,7 @@ class CategoriesBrands {
         this.checkbox.addEventListener('click', (event: Event) => {
             const target = event.target as HTMLElement;
             target.classList.toggle('select');
-            selectFilter(`${this.type}`);
+            selectFilter();
             console.log(event)
         });
     }

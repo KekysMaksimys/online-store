@@ -1,40 +1,39 @@
 import json from '../../data.json';
 let indexesArray = Array.from(Array(json.length).keys());
+let filteredIndexesArray: any[] = [];
+let hideIndexes: number[] = [];
 
-function selectFilter(typeFilter: string) {
+function selectFilter() {
     const selectCategoryAll = document.querySelectorAll('.select');
-    type ObjectKey = keyof typeof json[0];
-    let filter = typeFilter as ObjectKey;
-    indexesArray = Array.from(Array(json.length).keys());
+    let category = "category";
+    let brand = "brand";
+    let selectedValuesAll: any[] = [];
     selectCategoryAll.forEach((el) => {
-        json.forEach(
-            (e: {
-                id: number;
-                title: string;
-                description: string;
-                price: number;
-                discountPercentage: number;
-                rating: number;
-                stock: number;
-                brand: string;
-                category: string;
-                thumbnail: string;
-                images: string[];
-            }, index) => {
-                if (e[filter] === el.id) {
-                    indexesArray.splice(index, 1);
-                }
-            }
-        );
-    });
+        selectedValuesAll.push(el.id);
+    })
+    filteredIndexesArray = json.filter((e: {
+            id: number;
+            title: string;
+            description: string;
+            price: number;
+            discountPercentage: number;
+            rating: number;
+            stock: number;
+            brand: string;
+            category: string;
+            thumbnail: string;
+            images: string[];
+        }) => !(selectedValuesAll.includes(e.category) || selectedValuesAll.includes(e.brand))
+    );
+
     if (selectCategoryAll.length === 0) {
-        indexesArray = Array.from(Array(json.length).keys());
+        filteredIndexesArray = [];
         showAllCards();
     } else{
         showAllCards();
         hideCards();
+        filteredIndexesArray.splice(0);
     }
-    // console.log('indexes:',indexesArray)
 }
 
 function filtersPricesStock(number: number, type: string, compare: string){
@@ -78,12 +77,10 @@ function filtersPricesStock(number: number, type: string, compare: string){
             }, index) => {
                     if (+e[typeFilter] <= +number) {
                         indexesArray.splice(index, 1);
-                        // console.log(indexesArray.slice(index, 1))
                     }
                 }
             );
     }
-    // console.log(indexesArray)
     if(+number === 0){
         indexesArray = Array.from(Array(json.length).keys());
         showAllCards();
@@ -109,9 +106,9 @@ function resetFilters(){
 
 function hideCards(){
     const productCardsAll = document.querySelectorAll('.product-card');
-    indexesArray = [...new Set(indexesArray)];
-    indexesArray.forEach((el) =>{
-        productCardsAll[el].classList.add('hidden-card');
+    filteredIndexesArray = [...new Set(filteredIndexesArray)];
+    filteredIndexesArray.forEach((el) =>{
+        productCardsAll[el.id - 1].classList.add('hidden-card');
     })
 }
 
