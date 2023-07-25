@@ -1,5 +1,5 @@
 import { newTag } from '../create-element';
-import {selectFilter} from './select-filter';
+import {filteringCards} from './select-filter';
 
 class CategoriesBrands {
     [x: string]: any;
@@ -30,8 +30,7 @@ class CategoriesBrands {
         this.checkbox.addEventListener('click', (event: Event) => {
             const target = event.target as HTMLElement;
             target.classList.toggle('select');
-            selectFilter();
-            console.log(event)
+            filteringCards();
         });
     }
 }

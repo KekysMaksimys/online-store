@@ -1,17 +1,29 @@
 import json from '../../data.json';
 let indexesArray = Array.from(Array(json.length).keys());
-let filteredIndexesArray: any[] = [];
-let hideIndexes: number[] = [];
+let filteredCheckboxArray: unknown[] = [];
+let filteredInputArray: unknown[] = [];
+let finishedFilter: unknown[] = [];
+
+function filteringCards(){
+    selectFilter();
+    filtersPricesStock();
+    finishedFilter = filteredCheckboxArray.concat(filteredInputArray);
+    showAllCards()
+    hideCards();
+}
 
 function selectFilter() {
     const selectCategoryAll = document.querySelectorAll('.select');
+    if (selectCategoryAll.length === 0) {
+        return filteredCheckboxArray = [];
+    }
     let category = "category";
     let brand = "brand";
-    let selectedValuesAll: any[] = [];
+    let selectedValuesAll: unknown[] = [];
     selectCategoryAll.forEach((el) => {
         selectedValuesAll.push(el.id);
     })
-    filteredIndexesArray = json.filter((e: {
+    filteredCheckboxArray = json.filter((e: {
             id: number;
             title: string;
             description: string;
@@ -25,69 +37,37 @@ function selectFilter() {
             images: string[];
         }) => !(selectedValuesAll.includes(e.category) || selectedValuesAll.includes(e.brand))
     );
-
-    if (selectCategoryAll.length === 0) {
-        filteredIndexesArray = [];
-        showAllCards();
-    } else{
-        showAllCards();
-        hideCards();
-        filteredIndexesArray.splice(0);
-    }
+    return filteredCheckboxArray;
 }
 
-function filtersPricesStock(number: number, type: string, compare: string){
-    type ObjectKey = keyof typeof json[0];
-    let typeFilter = type as ObjectKey;
-    if(compare === 'low'){
-        json.map(
-            (e: {
-                id: number;
-                title: string;
-                description: string;
-                price: number;
-                discountPercentage: number;
-                rating: number;
-                stock: number;
-                brand: string;
-                category: string;
-                thumbnail: string;
-                images: string[];
-            }, index) => {
-                    if (+e[typeFilter] >= +number) {
-                        indexesArray.splice(index, 1);
-                    }
-                }
-            );
+function filtersPricesStock(){
+    let lowPriceInput = document.getElementById(`input-low-price`) as HTMLInputElement;
+    let topPriceInput = document.getElementById(`input-top-price`) as HTMLInputElement;
+    let lowStockInput = document.getElementById(`input-low-stock`) as HTMLInputElement;
+    let topStockInput = document.getElementById(`input-top-stock`) as HTMLInputElement;
+    let sumaryAllInput = +lowPriceInput.value + +topPriceInput.value + +lowStockInput.value + +topStockInput.value;
+    if(sumaryAllInput === 0){
+        return filteredInputArray = [];
     }
-    if(compare === 'top'){
-        json.map(
-            (e: {
-                id: number;
-                title: string;
-                description: string;
-                price: number;
-                discountPercentage: number;
-                rating: number;
-                stock: number;
-                brand: string;
-                category: string;
-                thumbnail: string;
-                images: string[];
-            }, index) => {
-                    if (+e[typeFilter] <= +number) {
-                        indexesArray.splice(index, 1);
-                    }
-                }
-            );
-    }
-    if(+number === 0){
-        indexesArray = Array.from(Array(json.length).keys());
-        showAllCards();
-    }  else{
-        showAllCards();
-        hideCards();
-    }
+    let topPriceValue = +topPriceInput.value || +topPriceInput.placeholder;
+    let topStockValue = +topStockInput.value || +topStockInput.placeholder;
+    filteredInputArray = json.filter((e: {
+        id: number;
+        title: string;
+        description: string;
+        price: number;
+        discountPercentage: number;
+        rating: number;
+        stock: number;
+        brand: string;
+        category: string;
+        thumbnail: string;
+        images: string[];
+    }) => !(
+        (e.price >= +lowPriceInput.value && e.price <= topPriceValue) && 
+        (e.stock >= +lowStockInput.value && e.stock <= topStockValue))
+    );
+    return filteredInputArray;
 }
 
 function resetFilters(){
@@ -106,10 +86,13 @@ function resetFilters(){
 
 function hideCards(){
     const productCardsAll = document.querySelectorAll('.product-card');
-    filteredIndexesArray = [...new Set(filteredIndexesArray)];
-    filteredIndexesArray.forEach((el) =>{
-        productCardsAll[el.id - 1].classList.add('hidden-card');
-    })
+    if(Array.isArray(finishedFilter)){
+        finishedFilter.forEach((el) =>{
+            if(el && typeof el === 'object' && 'id' in el && typeof el.id === 'number'){
+                productCardsAll[el.id - 1].classList.add('hidden-card');
+            }
+        })
+    }
 }
 
 function showAllCards(){
@@ -120,4 +103,4 @@ function showAllCards(){
 }
 
 
-export { selectFilter, filtersPricesStock, resetFilters};
+export { selectFilter, filtersPricesStock, resetFilters, filteringCards};

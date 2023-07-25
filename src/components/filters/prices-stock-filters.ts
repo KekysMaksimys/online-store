@@ -1,5 +1,5 @@
 import { newTag } from '../create-element';
-import {filtersPricesStock} from './select-filter';
+import {filteringCards} from './select-filter';
 
 class PricesStock {
     [x: string]: any;
@@ -48,10 +48,10 @@ class PricesStock {
 
 		addEventListeners(){
 			this.inputLow.addEventListener('input',() => {
-				filtersPricesStock(this.inputLow.value, this.type, 'low')
+				filteringCards()
 			});
 			this.inputTop.addEventListener('input',() => {
-				filtersPricesStock(this.inputTop.value, this.type, 'top')
+				filteringCards()
 			})
 		}
 }
