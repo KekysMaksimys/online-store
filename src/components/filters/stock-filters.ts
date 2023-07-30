@@ -1,5 +1,6 @@
 import { newTag } from '../create-element';
 import {filteringCards} from './select-filter';
+import {uncorrectNumeralInput} from './checking-numeral-input'
 
 class StockFilter {
     [x: string]: any;
@@ -50,11 +51,23 @@ class StockFilter {
 		}
 
 		addEventListeners(){
-			this.inputLow.addEventListener('input',() => {
-				filteringCards()
+			this.inputLow.addEventListener('input',(e: Event) => {
+				if((+this.inputLow.value <= +this.inputTop.max) && 
+						(+this.inputLow.value >= +this.inputLow.min))
+					{
+						filteringCards();
+					} else{
+						uncorrectNumeralInput(e);
+					}
 			});
-			this.inputTop.addEventListener('input',() => {
-				filteringCards()
+			this.inputTop.addEventListener('input',(e: Event) => {
+				if((+this.inputTop.value <= +this.inputTop.max) && 
+					(+this.inputTop.value >= +this.inputLow.min))
+				{
+					filteringCards();
+				} else{
+					uncorrectNumeralInput(e);
+				}
 			})
 		}
 }

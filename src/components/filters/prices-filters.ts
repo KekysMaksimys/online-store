@@ -60,12 +60,18 @@ class PricesFilter {
 						(+this.inputLow.value >= +this.inputLow.min))
 					{
 						filteringCards();
-					} //else{
-					// 	uncorrectNumeralInput(e);
-					// }
+					} else{
+						uncorrectNumeralInput(e);
+					}
 			});
-			this.inputTop.addEventListener('input',() => {
-				filteringCards()
+			this.inputTop.addEventListener('input',(e: Event) => {
+				if((+this.inputTop.value <= +this.inputTop.max) && 
+					(+this.inputTop.value >= +this.inputLow.min))
+				{
+					filteringCards();
+				} else{
+					uncorrectNumeralInput(e);
+				}
 			})
 		}
 }
