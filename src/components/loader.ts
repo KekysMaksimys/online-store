@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CatalogCard } from './catalog-card';
-import { CategoriesBrands } from './filters/category-brand-filters';
-import {PricesStock} from './filters/prices-stock-filters';
+import { CategoriesFilters } from './filters/categories-filters';
+import { BrandsFilters } from './filters/brands-filters';
+import {PricesFilter} from './filters/prices-filters';
+import {StockFilter} from './filters/stock-filters';
 import json from '../data.json';
 
 async function getCards() {
@@ -20,38 +22,47 @@ getCards();
 
 function renderProducts(array: any[]) {
     const fragment = new DocumentFragment();
-    let brands: any[] = [];
-    let category: any[] = [];
-    let prices: any[] = [];
-    let stock: any[] = [];
+    const brands: any[] = [];
+    const category: any[] = [];
+    const prices: any[] = [];
+    const stock: any[] = [];
+    
     array.forEach((data, index) => {
         const card = new CatalogCard(data, index);
-        brands.push(data.brand);
-        category.push(data.category);
+        if(!brands.includes(data.brand)){
+           brands.push(data.brand); 
+        }
+        if(!category.includes(data.category)){
+            category.push(data.category);
+        }
         prices.push(data.price);
         stock.push(data.stock);
         fragment.append(card.renderCard());
     });
-    category = [...new Set(category)];
+
     const filtersCategory = document.querySelector('.filters-category-list');
     category.forEach((item) => {
-        const category = new CategoriesBrands(item, 'category');
+        const category = new CategoriesFilters(item);
         filtersCategory.append(category.renderCategoriesBrands());
     });
-    brands = [...new Set(brands)];
+
     const filtersBrand = document.querySelector('.filters-brand-list');
     brands.forEach((item) => {
-        const brand = new CategoriesBrands(item, 'brand');
+        const brand = new BrandsFilters(item);
         filtersBrand.append(brand.renderCategoriesBrands());
     });
+
     const filtersPrice = document.querySelector('.filters-price');
-    const filterPrice = new PricesStock(prices, 'price');
-    filtersPrice.append(filterPrice.renderPricesStock());
+    const filterPrice = new PricesFilter(prices);
+    filtersPrice.append(filterPrice.renderPrices());
+
     const filtersStock = document.querySelector('.filters-stock');
-    const filterStock = new PricesStock(stock, 'stock');
-    filtersStock.append(filterStock.renderPricesStock());
+    const filterStock = new StockFilter(stock);
+    filtersStock.append(filterStock.renderStock());
+
     const cardsList = document.querySelector('.cards__list');
     cardsList.append(fragment);
+
     return cardsList;
 }
 

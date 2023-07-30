@@ -1,5 +1,5 @@
 import { newTag } from '../create-element';
-import { selectFilter, resetFilters} from './select-filter';
+import {resetFilters} from './select-filter';
 
 interface SourcesFilters {
     className?: string;

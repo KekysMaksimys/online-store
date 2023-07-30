@@ -1,11 +1,10 @@
 import { newTag } from '../create-element';
 import {filteringCards} from './select-filter';
 
-class CategoriesBrands {
+class CategoriesFilters {
     [x: string]: any;
-    constructor(name: string, type: string) {
+    constructor(name: string) {
         this.name = name;
-        this.type = type;
         this.currentName = newTag('div', {
             className: 'checkbox-line',
         });
@@ -29,10 +28,10 @@ class CategoriesBrands {
     addEventsListeners(){
         this.checkbox.addEventListener('click', (event: Event) => {
             const target = event.target as HTMLElement;
-            target.classList.toggle('select');
+            target.classList.toggle('category-select');
             filteringCards();
         });
     }
 }
 
-export { CategoriesBrands };
+export { CategoriesFilters };
