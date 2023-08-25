@@ -68,7 +68,7 @@ class CatalogCard {
         });
         // btn open modal
         this.btnOpenModal = newTag('button', {
-            className: 'btn-link',
+            className: 'more-card-info-btn',
             innerHTML: 'Show more',
         });
         // price
@@ -77,7 +77,7 @@ class CatalogCard {
         this.price = newTag('span', { className: 'price', innerText: this.price });
         // button add to cart
         this.btnBin = newTag('button', {
-            className: 'btn',
+            className: 'add-item-to-cart-btn',
             innerHTML: 'Add to cart',
             id: `${index + 1}`
         });

@@ -6,6 +6,26 @@
   grid-row-gap: 5px;
 }
 
+.product-card{
+  background-color: #232E3F;
+  border: 1px solid;
+  border-radius: 9px;
+  border-color: #CB9CF2;
+}
+
+.more-card-info-btn{
+  background-color: #CB9CF2;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.add-item-to-cart-btn{
+  background-color: #CB9CF2;
+  border: none;
+  border-radius: 4px;
+}
+
 li {
   list-style-type: none;
   border: solid 1px white;
