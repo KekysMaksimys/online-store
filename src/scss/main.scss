@@ -4,6 +4,7 @@
 @import "../scss/components/pop-up";
 @import "../scss/components/cart";
 @import "../scss/components/form";
+@import "../scss/components/card";
 
 body {
     color: #fff;
@@ -13,6 +14,7 @@ body {
 
 .container.open {
     display: grid;
+    width: 100%;
     grid-template-columns: 15% 84%;
     grid-column-gap: 1%;
 }

@@ -38,6 +38,8 @@ class CatalogCard {
     btnOpenModal;
     priceWrapper;
     priceText;
+    cardButtons;
+    imageContainer
     btnBin: HTMLElement & SourcesCatalogCard;
     
     constructor({ title, images, price, description, rating, stock}: any, index: number) {
@@ -53,11 +55,12 @@ class CatalogCard {
         });
         this.cardContainer.setAttribute('data-id', `${index + 1}`);
         this.card = newTag('div', { className: 'card' });
+        //image container
+        this.imageContainer = newTag('div', { className: 'card__img-container' });
         // img
         this.cardImg = newTag('img', {
             className: 'card__img',
             src: this.thumbnail,
-            width: 150,
             alt: this.title,
         });
         // card body
@@ -66,15 +69,19 @@ class CatalogCard {
             className: 'item-title',
             innerText: this.title,
         });
+        // price
+        this.priceWrapper = newTag('div', { className: 'price-wrapper' });
+        this.priceText = newTag('span', { innerText: ' $' });
+        this.price = newTag('span', { className: 'price', innerText: this.price });
+        //card buttons 
+        this.cardButtons = newTag('div', {
+            className: 'card-buttons'
+        });
         // btn open modal
         this.btnOpenModal = newTag('button', {
             className: 'more-card-info-btn',
             innerHTML: 'Show more',
         });
-        // price
-        this.priceWrapper = newTag('div', { className: 'price-wrapper' });
-        this.priceText = newTag('span', { innerText: ' $' });
-        this.price = newTag('span', { className: 'price', innerText: this.price });
         // button add to cart
         this.btnBin = newTag('button', {
             className: 'add-item-to-cart-btn',
@@ -85,14 +92,16 @@ class CatalogCard {
     }
     renderCard() {
         this.cardContainer.append(this.card);
-        this.card.append(this.cardImg);
+        this.card.append(this.imageContainer);
+        this.imageContainer.append(this.cardImg)
         this.card.append(this.cardBody);
         this.cardBody.append(this.cardTitle);
         this.cardBody.append(this.priceWrapper);
         this.priceWrapper.append(this.price);
         this.priceWrapper.append(this.priceText);
-        this.cardBody.append(this.btnOpenModal);
-        this.cardBody.append(this.btnBin);
+        this.cardBody.append(this.cardButtons);
+        this.cardButtons.append(this.btnOpenModal);
+        this.cardButtons.append(this.btnBin);
 
         return this.cardContainer;
     }
