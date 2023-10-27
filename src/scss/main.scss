@@ -6,19 +6,72 @@
 @import "../scss/components/form";
 @import "../scss/components/card";
 
+:root{
+    --bs-btn-font-family: Arial, Helvetica, sans-serif;
+    --bs-btn-font-size: 13.333px;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: normal;
+}
+
 body {
     color: #fff;
     background: #4C5675;
-    font-family: sans-serif;
+    font-family: sans-serif !important;
 }
 
 .container.open {
     display: grid;
     width: 100%;
-    grid-template-columns: 15% 84%;
+    grid-template-columns: 16% 83%;
     grid-column-gap: 1%;
 }
 
 .container {
     display: none;
+}
+
+h3{
+    font-family: sans-serif;
+    font-size: 18.72px;
+    font-weight: bold;
+}
+
+@media (width <= 1180px){
+    .container.open {
+        grid-template-columns: 0% 100%;
+        grid-column-gap: 0%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+//bootstrap overwrite styles
+@media (min-width: 1400px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 576px){
+    .container {
+        max-width: 100%;
+    }
 }

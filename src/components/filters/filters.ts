@@ -27,6 +27,8 @@ class Filters {
     filtersCategory;
     filtersCategoryName;
     filtersCategoryList;
+    filtersCategoryDropEnd;
+    filtersCategoryDropEndBtn;
     filtersBrand;
     filtersBrandName;
     filtersBrandList;
@@ -47,11 +49,24 @@ class Filters {
         });
         //category
         this.filtersCategory = newTag('div', { className: 'filters-category' });
-        this.filtersCategoryName = newTag('h3', { className: 'filters-category-name' });
+        this.filtersCategoryName = newTag('h3', { 
+            className: 'filters-category-name',
+            innerText: 'Category'
+        });
         this.filtersCategoryList = newTag('div', { className: 'filters-category-list' });
+        this.filtersCategoryDropEnd = newTag('div', { className: 'btn-group dropend' });
+        this.filtersCategoryDropEndBtn = newTag('div', { 
+            className: 'btn btn-secondary dropdown-toggle',
+            type: 'button',
+            innerText: 'more categories',
+            innerHTML: 'data-bs-toggle="dropdown", aria-expanded="false"'
+        });
         //brand
         this.filtersBrand = newTag('div', { className: 'filters-brand' });
-        this.filtersBrandName = newTag('h3', { className: 'filters-brand-name' });
+        this.filtersBrandName = newTag('h3', { 
+            className: 'filters-brand-name',
+            innerText: 'Brand'
+        });
         this.filtersBrandList = newTag('div', { className: 'filters-brand-list' });
         //price
         this.filtersPrice = newTag('div', { className: 'filters-price' });
