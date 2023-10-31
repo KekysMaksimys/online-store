@@ -1,5 +1,6 @@
 import { newTag } from '../create-element';
 import {resetFilters} from './select-filter';
+import { closeFiltersList } from '../open-close-filters-list';
 
 interface SourcesFilters {
     className?: string;
@@ -36,6 +37,7 @@ class Filters {
     filtersPriceName;
     filtersStock;
     filtersStockName;
+    closeFiltersList;
     filtersStockTo: HTMLElement & SourcesFilters;
     constructor() {
         this.filtersContainer = newTag('section', {
@@ -46,6 +48,9 @@ class Filters {
         this.resetButton = newTag('button', {
             id: 'filters-reset-button',
             innerText: 'Reset Filters',
+        });
+        this.closeFiltersList = newTag('button', {
+            id: 'filters-list-close-btn',
         });
         //category
         this.filtersCategory = newTag('div', { className: 'filters-category' });
@@ -86,6 +91,7 @@ class Filters {
     renderFilters() {
         this.filtersContainer.append(this.resetFilters);
         this.resetFilters.append(this.resetButton);
+        this.resetFilters.append(this.closeFiltersList);
         this.filtersContainer.append(this.filtersCategory);
         this.filtersCategory.append(this.filtersCategoryName);
         this.filtersCategory.append(this.filtersCategoryList);
@@ -104,6 +110,10 @@ class Filters {
         this.resetButton.addEventListener('click', () => {
             resetFilters();
         })
+
+        this.closeFiltersList.addEventListener('click', () => {
+            closeFiltersList();
+        })        
     }
 }
 
