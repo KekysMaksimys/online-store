@@ -21,6 +21,7 @@ interface SourcesCatalogCard {
     checked?: boolean;
     width?: number;
     alt?: string;
+    loading?: string;
 }
 class CatalogCard {
     title: string;
@@ -62,6 +63,7 @@ class CatalogCard {
             className: 'card__img',
             src: this.thumbnail,
             alt: this.title,
+            loading: 'lazy'
         });
         // card body
         this.cardBody = newTag('div', { className: 'card-body' });
