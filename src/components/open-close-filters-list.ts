@@ -30,8 +30,8 @@ function closeFiltersList(){
 	const addItemToCartBtn = document.querySelectorAll('.add-item-to-cart-btn');
 	const itemInfoBtn = document.querySelectorAll('.more-card-info-btn');
 
-	filterSection.classList.remove('open');
-	catalogContainer.classList.remove('opacity');
+	filterSection.classList.toggle('open');
+	catalogContainer.classList.toggle('opacity');
 
 	addItemToCartBtn.forEach((elem:HTMLElement) =>{
 			elem.classList.remove('disable');

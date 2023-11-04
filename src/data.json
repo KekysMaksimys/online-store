@@ -734,12 +734,12 @@
     {
         "id": 41,
         "title": "NIGHT SUIT",
-        "description": "NIGHT SUIT RED MICKY MOUSE..  For Girls. Fantastic Suits.",
+        "description": "NIGHT SUIT RED MICKY MOUSE.  For Girls. Fantastic Suits.",
         "price": 55,
         "discountPercentage": 15.05,
         "rating": 4.65,
         "stock": 21,
-        "brand": "RED MICKY MOUSE..",
+        "brand": "RED MICKY MOUSE",
         "category": "womens-dresses",
         "thumbnail": "https://i.dummyjson.com/data/products/41/thumbnail.webp",
         "images": [

@@ -1,17 +1,22 @@
 .filters-section {
-  padding-left: 12px;
-  transition: width 0.5s;
   z-index: 1;
   background: #4C5675;
+  #filters-list-close-btn{
+    visibility: hidden;
+  }
 }
 
 .filters-section.open{
   padding-left: 12px;
-  width: 215px;
+  width: 223px;
   height: auto;
   border-radius: 15px;
-  visibility: visible;
   box-shadow: rgba(0, 0, 0, 0.56) 30px 50px 51px;
+  visibility: visible;  
+  transform: translateX(0);
+  #filters-list-close-btn{
+    visibility: visible; 
+  }
 }
 
 .hidden-card{
@@ -44,22 +49,13 @@
   border-color: #CB9CF2;
   border: 1px solid;
   cursor: pointer;
-    &:hover {
-      transform: scale(1.2);
-      transition: all 0.3s;
-    }
 }
 
-@media (width <= 1180px) {
+@media (max-width: 1180px) {
   .filters-section {
     padding-left: 0px;
-    width: 0;
     visibility: hidden;
-  }
-}
-
-@media (width >= 1180px) {
-  #filters-list-close-btn {
-    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
   }
 }
