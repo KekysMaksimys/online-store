@@ -4,6 +4,7 @@ import { CategoriesFilters } from './filters/categories-filters';
 import { BrandsFilters } from './filters/brands-filters';
 import {PricesFilter} from './filters/prices-filters';
 import {StockFilter} from './filters/stock-filters';
+import { Filters } from './filters/filters';
 import json from '../data.json';
 
 async function getCards() {
@@ -41,15 +42,38 @@ function renderProducts(array: any[]) {
     });
 
     const filtersCategory = document.querySelector('.filters-category-list');
-    category.forEach((item) => {
-        const category = new CategoriesFilters(item);
-        filtersCategory.append(category.renderCategoriesBrands());
+    
+    category.forEach((item, index) => {
+        if(index <= 10){
+            const category = new CategoriesFilters(item);
+            filtersCategory.append(category.renderCategoriesBrands()); 
+        }
     });
+    filtersCategory.append(new Filters().renderDropDownCategoryLists());
+    const filtersCategoryDropDownMenu = document.querySelector('.category.dropdown-menu');
+    console.log(category)
+    category.forEach((item, index) =>{
+        if(index > 10){
+            const category = new CategoriesFilters(item);
+            filtersCategoryDropDownMenu.append(category.renderCategoriesBrands());
+        }
+    })
 
     const filtersBrand = document.querySelector('.filters-brand-list');
-    brands.forEach((item) => {
-        const brand = new BrandsFilters(item);
-        filtersBrand.append(brand.renderCategoriesBrands());
+    brands.forEach((item, index) => {
+        if(index <= 10){
+            const brand = new BrandsFilters(item);
+            filtersBrand.append(brand.renderCategoriesBrands()); 
+        }
+    });
+
+    filtersBrand.append(new Filters().renderDropDownBrandLists());
+    const filtersBrandDropDownMenu = document.querySelector('.brands.dropdown-menu');
+    brands.forEach((item, index) => {
+        if(index > 10){
+            const brand = new BrandsFilters(item);
+            filtersBrandDropDownMenu.append(brand.renderCategoriesBrands()); 
+        }
     });
 
     const filtersPrice = document.querySelector('.filters-price');
