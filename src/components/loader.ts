@@ -68,7 +68,7 @@ function renderProducts(array: any[]) {
     });
 
     filtersBrand.append(new Filters().renderDropDownBrandLists());
-    const filtersBrandDropDownMenu = document.querySelector('.brands.dropdown-menu');
+    const filtersBrandDropDownMenu = document.querySelector('.brand.dropdown-menu');
     brands.forEach((item, index) => {
         if(index > 10){
             const brand = new BrandsFilters(item);

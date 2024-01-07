@@ -140,7 +140,7 @@ class Filters {
 
         this.filtersDropDownBtn.classList.add('brand');
         this.filtersDropDownBtn.innerText = 'More Brands';
-        this.filtersDropDownMenu.classList.add('brands');
+        this.filtersDropDownMenu.classList.add('brand');
 
         return this.filtersDropDown
     }

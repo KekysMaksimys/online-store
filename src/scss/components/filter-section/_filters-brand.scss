@@ -1,0 +1,36 @@
+.filters-brand{
+	margin-top: 15px;
+}
+
+.filters-brand-list{
+	.checkbox-line{
+		overflow: hidden;
+	}
+}
+
+.btn.btn-secondary.brand{
+	background-color: #4C5675;
+	border-color: #CB9CF2;
+}
+
+.filters-brand-list{
+	.checkbox-line{
+		display: grid;
+		grid-template-columns: 15px 169px;
+		column-gap: 6px;
+		align-items: start;
+		padding: 3px 0 3px 0;
+		label{
+			overflow: hidden;
+		}
+		& > input{
+			height: 15.3px;
+			width: 15.3px;
+			margin-top: 4px;
+		}
+	}
+}
+
+.dropdown-menu.brand{
+	padding-left: 16px;
+}
