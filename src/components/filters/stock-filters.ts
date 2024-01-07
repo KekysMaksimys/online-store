@@ -7,7 +7,7 @@ class StockFilter {
     constructor(stock: number[]) {
         this.stock = stock;
         this.currentName = newTag('div', {
-            className: 'input-section',
+            className: 'input-section stock',
         });
         this.currentName.classList.add('item-active');
 				this.fromLow = newTag('p', {
@@ -21,12 +21,12 @@ class StockFilter {
         this.inputLow = newTag('input', {
             type: 'stock',
             id: `input-low-stock`,
-						className: `input-numbers`
+						className: `input-numbers stock`
         });
 				this.inputTop = newTag('input', {
 					type: 'stock',
 					id: `input-top-stock`,
-					className: `input-numbers`,
+					className: `input-numbers stock`,
 				});
     }
     renderStock() {
