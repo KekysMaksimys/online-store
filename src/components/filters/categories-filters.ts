@@ -6,7 +6,7 @@ class CategoriesFilters {
     constructor(name: string) {
         this.name = name;
         this.currentName = newTag('li', {
-            className: 'Checkbox-line',
+            className: 'checkbox-line',
         });
         this.currentName.classList.add('item-active');
         this.currentName.classList.add('dropdown-item');
