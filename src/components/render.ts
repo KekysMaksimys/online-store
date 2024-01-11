@@ -2,7 +2,7 @@
 import { Main } from './main';
 
 import { Header } from './header';
-import { Overlay } from './overlay';
+import { Overlay } from './modal/overlay';
 // import { CartCard } from "./cart-card";
 // import { toggleBinStatus } from "./bin-status";
 

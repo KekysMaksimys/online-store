@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { newTag } from './create-element';
-import { Modal } from './modal';
+import { Modal } from './modal/modal';
 import { Cart } from './cart';
 
 interface SourcesCatalogCard {

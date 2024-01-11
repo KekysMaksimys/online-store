@@ -1,4 +1,5 @@
-import { newTag } from './create-element';
+import { newTag } from '../create-element';
+import { disablingBodyScroll,enableBodyScroll } from '../on-off-scrolling-body';
 
 class Modal {
     overlay: HTMLElement & {
@@ -252,12 +253,13 @@ class Modal {
         const overlay = document.querySelector('.pop-up-background');
         overlay.append(this.render());
         overlay.classList.add('open');
+        disablingBodyScroll();
     }
     closeModal() {
         this.modal.remove();
         const overlay = document.querySelector('.pop-up-background');
-
         overlay.classList.remove('open');
+        enableBodyScroll();
     }
 }
 
