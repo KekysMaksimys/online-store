@@ -1,6 +1,6 @@
 import { newTag } from '../create-element';
 import {resetFilters} from './select-filter';
-import { closeFiltersList } from '../open-close-filters-list';
+import { closeFiltersList } from './open-close-filters-list';
 
 interface SourcesFilters {
     className?: string;

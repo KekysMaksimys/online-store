@@ -1,6 +1,6 @@
 import { forEach } from 'lodash';
 import { newTag } from './create-element';
-import { openFiltersList, closeFiltersList } from './open-close-filters-list';
+import { openFiltersList, closeFiltersList } from './filters/open-close-filters-list';
 
 class ProductCatalog {
     productCatalog: HTMLElement & {

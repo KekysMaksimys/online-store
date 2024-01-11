@@ -1,5 +1,5 @@
 import { newTag } from '../create-element';
-import { disablingBodyScroll,enableBodyScroll } from '../on-off-scrolling-body';
+import { disablingBodyScroll,enableBodyScroll } from './on-off-scrolling-body';
 
 class Modal {
     overlay: HTMLElement & {

@@ -1,5 +1,5 @@
 import { newTag } from '../create-element';
-import { enableBodyScroll } from '../on-off-scrolling-body';
+import { enableBodyScroll } from './on-off-scrolling-body';
 
 class Overlay {
     overlay: HTMLElement & {

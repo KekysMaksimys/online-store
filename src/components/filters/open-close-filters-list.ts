@@ -1,3 +1,4 @@
+import { disablingCatalogScroll,enableCatalogScroll } from './disable-catalog-scrolling';
 
 function openFiltersList(){
 	const filterSection = document.querySelector('.filters-section') as HTMLElement;
@@ -19,6 +20,7 @@ function openFiltersList(){
 	});
 
 	cardsList.addEventListener("click", closeFiltersList, true);
+	disablingCatalogScroll();
 	return;
 }
 
@@ -42,6 +44,7 @@ function closeFiltersList(){
 	});
 
 	cardsList.removeEventListener("click", closeFiltersList, true);
+	enableCatalogScroll();
 	return;
 }
 
