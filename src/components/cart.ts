@@ -33,13 +33,14 @@ class Cart {
     productRating;
     productDiscount;
     productBuyInfo;
+    productCounting;
     productStock;
     productAdd;
     productCount;
     productTakeAway;
     productPrice;
     summaryContainer;
-    summaryTitle;
+    summaryContent;
     summaryProducts;
     summaryTotalPrice;
     summaryPromoCode;
@@ -52,7 +53,7 @@ class Cart {
         this.productsList = newTag('div', { className: 'products-list' });
         this.productItem = newTag('div', { className: 'product-item' });
 
-        this.productImg = newTag('div', { className: 'product-img' });
+        this.productImg = newTag('div', { className: 'product__img-container' });
         this.productInfo = newTag('div', { className: 'product-info' });
         this.productName = newTag('div', { className: 'product-name' });
         this.productRating = newTag('div', { className: 'product-rating' });
@@ -60,9 +61,9 @@ class Cart {
 
         this.productBuyInfo = newTag('div', { className: 'product-buy-info' });
         this.productStock = newTag('div', { className: 'product-stock' });
+        this.productCounting = newTag('div', { className: 'product__counting-container' });
         this.productAdd = newTag('button', {
             className: 'product-add',
-            textContent: '+',
         });
         this.productCount = newTag('h3', {
             className: 'product-count',
@@ -70,7 +71,6 @@ class Cart {
         });
         this.productTakeAway = newTag('button', {
             className: 'product-take-away',
-            textContent: '-',
         });
         this.productPrice = newTag('h4', {
             className: 'product-price',
@@ -78,10 +78,7 @@ class Cart {
         });
 
         this.summaryContainer = newTag('div', { className: 'summary__container' });
-        this.summaryTitle = newTag('h3', {
-            className: 'summary-title',
-            textContent: 'Summary',
-        });
+        this.summaryContent = newTag('div', { className: 'summary__content' });
         this.summaryProducts = newTag('h3', {
             className: 'summary-products',
             textContent: 'Products: 0',
@@ -113,12 +110,12 @@ class Cart {
         this.productsCart.append(this.productsPage);
         this.productsPage.append(this.productsList);
 
-        this.summaryContainer.append(this.summaryTitle);
-        this.summaryContainer.append(this.summaryProducts);
-        this.summaryContainer.append(this.summaryTotalPrice);
-        this.summaryContainer.append(this.summaryPromoCode);
-        this.summaryContainer.append(this.summaryBuy);
-        this.summaryContainer.append(this.orderButton);
+        this.summaryContainer.append(this.summaryContent);
+        this.summaryContent.append(this.summaryProducts);
+        this.summaryContent.append(this.summaryTotalPrice);
+        this.summaryContent.append(this.summaryPromoCode);
+        this.summaryContent.append(this.summaryBuy);
+        this.summaryContent.append(this.orderButton);
 
         localStorage.clear();
         return this.cartContainer;
@@ -148,7 +145,7 @@ class Cart {
             return;
         }
         const image = newTag('img', {
-            className: 'product-image',
+            className: 'product__image',
             src: `${product.images[0]}`,
         });
         this.productImg.append(image);
@@ -171,10 +168,11 @@ class Cart {
         this.productItem.append(this.productBuyInfo);
         this.productBuyInfo.append(this.productStock);
         this.productAdd.id = product.title;
-        this.productBuyInfo.append(this.productAdd);
-        this.productBuyInfo.append(this.productCount);
+        this.productCounting.append(this.productAdd);
+        this.productCounting.append(this.productCount);
+        this.productCounting.append(this.productTakeAway);
         this.productTakeAway.id = product.title;
-        this.productBuyInfo.append(this.productTakeAway);
+        this.productBuyInfo.append(this.productCounting)
         this.productBuyInfo.append(this.productPrice);
 
         this.summaryUpdate();
