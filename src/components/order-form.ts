@@ -1,4 +1,5 @@
 import { newTag } from './create-element';
+import { gettingCurrentDate } from './get-date';
 
 class Form {
     [x: string]: any;
@@ -19,7 +20,7 @@ class Form {
         this.name = newTag('input', {
             className: 'name-input input',
             type: 'text',
-            pattern: '^[A-Za-z]{4,}$',
+            pattern: '^[A-Za-z]{3,}$',
             required: true,
         });
 
@@ -31,7 +32,7 @@ class Form {
             className: 'surname-input input',
             type: 'text',
             required: true,
-            pattern: '^[A-Za-z]{5,}$',
+            pattern: '^[A-Za-z]{3,}$',
         });
 
         this.deliveryLabel = newTag('label', {
@@ -42,7 +43,7 @@ class Form {
             className: 'delivery-input input',
             type: 'date',
             required: true,
-            min: '2022-12-23',
+            min: `${gettingCurrentDate()}`,
         });
 
         this.streetLabel = newTag('label', {
@@ -62,20 +63,20 @@ class Form {
         });
         this.house = newTag('input', {
             className: 'house-input input',
-            type: 'number',
-            required: true,
-            pattern: '^[1-9]*$',
-        });
-
-        this.flatLabel = newTag('label', {
-            className: 'flat-label label',
-            innerHTML: 'Flat number',
-        });
-        this.flat = newTag('input', {
-            className: 'flat-input input',
             type: 'text',
             required: true,
-            pattern: '^[1-9–]+[-0-9–]*$',
+            pattern: '^(?:[1-9]|[1-9][0-9]{1,3}|1[0-9]{4}|20000)$',
+        });
+
+        this.apartmentLabel = newTag('label', {
+            className: 'apartment-label label',
+            innerHTML: 'Apartment number',
+        });
+        this.apartment = newTag('input', {
+            className: 'apartment-input input',
+            type: 'text',
+            required: true,
+            pattern: '^(?:[1-9]|[1-9][0-9]{1,2}|[1-4][0-9]{3}|5000)$',
         });
 
         this.fieldset = newTag('fieldset');
@@ -117,7 +118,7 @@ class Form {
         this.inputButton = newTag('input', {
             className: 'input-button btn',
             innerHTML: 'submit',
-            type: 'submit',
+            type: 'Submit',
         });
         this.listenEvents();
     }
@@ -128,7 +129,7 @@ class Form {
         this.deliveryLabel.append(this.delivery);
         this.streetLabel.append(this.street);
         this.houseLabel.append(this.house);
-        this.flatLabel.append(this.flat);
+        this.apartmentLabel.append(this.apartment);
         this.cashContainer.append(this.cash, this.cashLabel);
         this.cardContainer.append(this.card, this.cardLabel);
         this.fieldset.append(this.legend, this.cashContainer, this.cardContainer);
@@ -138,7 +139,7 @@ class Form {
             this.deliveryLabel,
             this.streetLabel,
             this.houseLabel,
-            this.flatLabel,
+            this.apartmentLabel,
             this.fieldset,
             this.inputButton
         );
@@ -151,7 +152,7 @@ class Form {
             localStorage.setItem('delivery', this.delivery.value);
             localStorage.setItem('street', this.street.value);
             localStorage.setItem('house', this.house.value);
-            localStorage.setItem('flat', this.flat.value);
+            localStorage.setItem('apartment', this.apartment.value);
             localStorage.setItem('cash', this.cash.checked);
             localStorage.setItem('card', this.card.checked);
         });
