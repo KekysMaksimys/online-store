@@ -147,11 +147,11 @@ function updatingCardsListAfterFilters(){
     cardsList.innerHTML = '';
     const fragment = new DocumentFragment();
     showFilteredCards.forEach((el, index) => {
-        const card = new CatalogCard(el, index);
+        const id: number = (el as {id: number}).id - 1
+        const card = new CatalogCard(el, id);
         fragment.append(card.renderCard());
     })
     cardsList.append(fragment);
-    console.log(cardsList)
 }
 
 export {resetFilters, filteringCards};
