@@ -95,7 +95,6 @@ class Form {
         });
         this.cashLabel = newTag('label', {
             className: 'cash-label',
-            innerHTML: 'Cash',
             for: 'cash',
         });
 
@@ -111,7 +110,6 @@ class Form {
         });
         this.cardLabel = newTag('label', {
             className: 'card-label',
-            innerHTML: 'Card',
             for: 'card',
         });
 
