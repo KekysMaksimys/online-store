@@ -1,3 +1,4 @@
+import { disablingCatalogScroll,enableCatalogScroll } from './disable-catalog-scrolling';
 
 function openFiltersList(){
 	const filterSection = document.querySelector('.filters-section') as HTMLElement;
@@ -19,6 +20,7 @@ function openFiltersList(){
 	});
 
 	cardsList.addEventListener("click", closeFiltersList, true);
+	disablingCatalogScroll();
 	return;
 }
 
@@ -30,8 +32,8 @@ function closeFiltersList(){
 	const addItemToCartBtn = document.querySelectorAll('.add-item-to-cart-btn');
 	const itemInfoBtn = document.querySelectorAll('.more-card-info-btn');
 
-	filterSection.classList.remove('open');
-	catalogContainer.classList.remove('opacity');
+	filterSection.classList.toggle('open');
+	catalogContainer.classList.toggle('opacity');
 
 	addItemToCartBtn.forEach((elem:HTMLElement) =>{
 			elem.classList.remove('disable');
@@ -42,6 +44,7 @@ function closeFiltersList(){
 	});
 
 	cardsList.removeEventListener("click", closeFiltersList, true);
+	enableCatalogScroll();
 	return;
 }
 

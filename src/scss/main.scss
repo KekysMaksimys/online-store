@@ -1,10 +1,14 @@
 @import "../scss/components/header";
-@import "../scss/components/filter-section";
+@import "../scss/components/filter-section/filter-section";
+@import "../scss/components/filter-section/filters-category";
+@import "../scss/components/filter-section/filters-brand";
+@import "../scss/components/filter-section/filters-price";
+@import "../scss/components/filter-section/filters-stock";
 @import "../scss/components/product-section";
-@import "../scss/components/pop-up";
 @import "../scss/components/cart";
 @import "../scss/components/form";
 @import "../scss/components/card";
+@import "../scss/components/pop-up";
 
 :root{
     --bs-btn-font-family: Arial, Helvetica, sans-serif;
@@ -22,8 +26,8 @@ body {
 .container.open {
     display: grid;
     width: 100%;
-    grid-template-columns: 16% 83%;
-    grid-column-gap: 1%;
+    grid-template-columns: 17% 83%;
+    // grid-column-gap: 1%;
 }
 
 .container {

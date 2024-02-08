@@ -1,0 +1,22 @@
+.filters-price{
+	margin-top: 15px;
+	p{
+		padding-left: 3px;
+		margin-bottom: 0;
+	}
+}
+
+.input-section.price{
+	display: grid;
+	grid-template-areas: 
+											"a b"
+											"c c";
+}
+
+.input-numbers.price{
+	width: 100px;
+	border-width: 1.5px;
+	border-color: #CB9CF2;
+	border-radius: 6px;
+}
+

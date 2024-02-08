@@ -7,7 +7,7 @@ class PricesFilter {
     constructor(price: number[]) {
         this.price = price;
         this.currentName = newTag('div', {
-            className: 'input-section',
+            className: 'input-section price',
         });
         this.currentName.classList.add('item-active');
 				this.fromLow = newTag('p', {
@@ -18,18 +18,15 @@ class PricesFilter {
 					innerText: 'to',
 					className: `input-top`,
 				});
-				this.inputsForms = newTag('div', {
-					className: 'prices-inputs-forms'
-				})
         this.inputLow = newTag('input', {
             type: 'price',
             id: `input-low-price`,
-						className: `input-numbers`
+						className: `input-numbers price`
         });
 				this.inputTop = newTag('input', {
 					type: 'price',
 					id: `input-top-price`,
-					className: `input-numbers`,
+					className: `input-numbers price`,
 				});
     }
     renderPrices() {
@@ -37,9 +34,8 @@ class PricesFilter {
 			this.addEventListeners();
 			this.currentName.append(this.fromLow);
 			this.currentName.append(this.toTheTop);
-			this.currentName.append(this.inputsForms);
-			this.inputsForms.append(this.inputLow);
-			this.inputsForms.append(this.inputTop);
+			this.currentName.append(this.inputLow);
+			this.currentName.append(this.inputTop);
 
 			return this.currentName;
     }

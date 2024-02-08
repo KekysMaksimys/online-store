@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { newTag } from './create-element';
-import { Modal } from './modal';
+import { Modal } from './modal/modal';
 import { Cart } from './cart';
 
 interface SourcesCatalogCard {
@@ -21,6 +21,7 @@ interface SourcesCatalogCard {
     checked?: boolean;
     width?: number;
     alt?: string;
+    loading?: string;
 }
 class CatalogCard {
     title: string;
@@ -62,6 +63,7 @@ class CatalogCard {
             className: 'card__img',
             src: this.thumbnail,
             alt: this.title,
+            loading: 'lazy'
         });
         // card body
         this.cardBody = newTag('div', { className: 'card-body' });

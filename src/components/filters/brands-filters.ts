@@ -5,10 +5,11 @@ class BrandsFilters {
     [x: string]: any;
     constructor(name: string) {
         this.name = name;
-        this.currentName = newTag('div', {
+        this.currentName = newTag('li', {
             className: 'checkbox-line',
         });
         this.currentName.classList.add('item-active');
+        this.currentName.classList.add('dropdown-item');
         this.checkbox = newTag('input', {
             type: 'checkbox',
             id: this.name,

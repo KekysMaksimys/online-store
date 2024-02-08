@@ -5,6 +5,7 @@
 .form__section {
     display: none;
     width: 50%;
+    max-width: 700px;
     padding-top: 50px;
     margin: 0 auto;
     &.open {
@@ -22,10 +23,12 @@
     }
     .input {
         padding: 0.5em;
-        color: #4646464b;
+        color: black;
         font-weight: 300;
         border: 1px solid #4646464b;
         margin-top: 0.5em;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
         &:focus:invalid {
             border: 1px solid red;
             color: red;
@@ -35,20 +38,59 @@
             color: green;
         }
     }
-    fieldset {
-        margin-top: 0.5em;
-        margin-left: 0.5em;
-        width: 40%;
-    }
-    .cash-container,
-    .card-container {
-        padding: 0.5em;
-    }
-    .cash-label,
-    .card-label {
-        margin-left: 0.5em;
-    }
+
     .input-button {
-        margin: 0.5em;
+        margin: 0.5em auto;
+        width: 40%;
+        background-color: #CB9CF2;
+        border-radius: 10px;
+        transition: all 0.4s;
+        &:hover{
+            color: black;
+            transform: scale(1.1);
+        }
     }
+}
+
+fieldset {
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    width: 40%;
+}
+.cash-container,
+.card-container {
+    display: flex;
+    align-content: center;
+    padding: 0.5em;
+}
+
+.cash-label{
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/svg/cash-money.svg);    
+    background-repeat: no-repeat;
+    margin-left: 0.5em;
+}
+
+.card-label{
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/svg/card-money.svg);
+    background-repeat: no-repeat;
+    margin-left: 0.5em;
+}
+
+@media (width <= 1000px){
+    .form__section{
+        width: 80%;
+
+        fieldset{
+            width: 70%;
+        }
+
+        .input-button{
+            width: 60%;
+        }
+    }
+
 }

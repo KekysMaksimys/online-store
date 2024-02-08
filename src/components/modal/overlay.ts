@@ -1,4 +1,5 @@
-import { newTag } from './create-element';
+import { newTag } from '../create-element';
+import { enableBodyScroll } from './on-off-scrolling-body';
 
 class Overlay {
     overlay: HTMLElement & {
@@ -36,6 +37,7 @@ class Overlay {
             modal.remove();
             this.overlay.classList.remove('open');
         });
+        enableBodyScroll();
     }
 }
 

@@ -19,6 +19,7 @@ function newTag(
         width?: number;
         alt?: string;
         placeholder?:string;
+        loading?: string;
     }
 ) {
     return Object.assign(document.createElement(tag), options);
